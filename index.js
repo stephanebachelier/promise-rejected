@@ -12,10 +12,9 @@ function rejected (val) {
     return Promise.resolve(promise)
       .then(() => acc)
       .catch(error => {
-        if (error === undefined && length === 1) {
-          return acc
+        if (error !== undefined) {
+          acc.push(error)
         }
-        acc.push(error)
         return acc
       })
   }, Promise.resolve(acc)))
