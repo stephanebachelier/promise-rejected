@@ -4,7 +4,8 @@
   "description": "Return rejected promises",
   "main": "index.js",
   "scripts": {
-    "test": "standard && NODE_ENV=test ava test.js"
+    "test": "standard && NODE_ENV=test ava test.js",
+    "test-cov": "standard && NODE_ENV=test nyc ava test.js"
   },
   "repository": "stephanebachelier/promise-rejected",
   "keywords": [
@@ -17,6 +18,7 @@
   "devDependencies": {
     "ava": "^0.18.2",
     "is-promise": "^2.1.0",
+    "nyc": "^10.2.0",
     "standard": "^4.5.2"
   },
   "files": [
