@@ -1,6 +1,6 @@
 {
   "name": "promise-rejected",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Return rejected promises",
   "main": "index.js",
   "scripts": {
