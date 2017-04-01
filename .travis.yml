@@ -5,6 +5,9 @@ node_js:
 - "7"
 sudo: false
 language: node_js
-script: "npm run test-cov"
+script: npm run test-cov
+install:
+  - yarn
+  - npm install coveralls@2
 after_success:
-  - './node_modules/.bin/nyc report --reporter=text-lcov | ./node_modules/.bin/coveralls'
+  - ./node_modules/.bin/nyc report --reporter=text-lcov | ./node_modules/.bin/coveralls
