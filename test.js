@@ -12,6 +12,12 @@ test('should return an empty array if no args', t => {
     .catch(t.fail)
 })
 
+test('should return an empty array if empty array', t => {
+  return rejected([])
+    .then(res => t.deepEqual(res, []))
+    .catch(t.fail)
+})
+
 test('(n = 1) should return an empty array if the given promise is resolved', t => {
   return rejected(Promise.resolve(1))
     .then(res => t.deepEqual(res, []))
@@ -39,5 +45,17 @@ test('(n > 1) should return an array with errors for all rejected promises', t =
 test('(n > 1) should return an array with n errors for n rejected promises', t => {
   return rejected([1, 2, 3].map(i => Promise.reject(i)))
     .then(res => t.deepEqual(res, [1, 2, 3]))
+    .catch(t.fail)
+})
+
+test('(n = 1) undefined error - should return an empty array', t => {
+  return rejected(Promise.reject())
+    .then(res => t.deepEqual(res, []))
+    .catch(t.fail)
+})
+
+test('(n > 1) undefined error - should return an empty array', t => {
+  return rejected([1, 2, 3].map(i => Promise.reject()))
+    .then(res => t.deepEqual(res, []))
     .catch(t.fail)
 })
