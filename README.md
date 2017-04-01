@@ -17,9 +17,48 @@ or
 $ yarn add promise-reject
 ```
 
+## Why ?
+
+`Promise.all` will stop at first error detected while `promise-rejected` will give run all the promises and return all errors detected.
+
+As its goal is to detected errors, the promise is resolved with detected errors.
+
+
 ## Usage
 
-TODO
+`promise-rejected` is useful when you need to have access to a list of errors.
+
+A good example is like in form validation. If you have a validation function for each field, any invalid field might throw an error that you can catch.
+
+`promise-rejected` will enable you to display an error for all invalid fields in one row while using `Promise.all` will enable you to only display the first invalid field.
+
+## Example
+
+This example is a bit contrived but you should understand the purpose of the `promise-rejected` function.
+
+```js
+const rejected = require('promise-rejected')
+
+rejected([1, 2, 3, 4, 5, 6].map(function (v) {
+  if (v % 2 === 0) {
+    throw new Error('invalid value')
+  }
+}))
+  .then(function (val) {
+    val.map(function (err) {
+      console.log('Error : #' + err.message)
+      /*
+        Error : #2
+        Error : #4
+        Error : #6
+      */
+    })
+  })
+  .catch()
+```
+
+If you had used `Promise.all` the promise chain will have been rejected with only the first error :
+
 
 ## Inspiration
 
