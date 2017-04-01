@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "standard && NODE_ENV=test ava test.js",
-    "test-cov": "standard && NODE_ENV=test nyc ava test.js"
+    "test-cov": "standard && NODE_ENV=test nyc ava test.js",
+    "coverage": "standard && NODE_ENV=test nyc --reporter=html --reporter=text ava test.js"
   },
   "repository": "stephanebachelier/promise-rejected",
   "keywords": [
